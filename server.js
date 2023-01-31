@@ -6,7 +6,7 @@ const { Server } = require('socket.io')
 const Filter = require('bad-words')
 const io = new Server(server, {
 	cors: {
-		origin: 'https://starterkana.onrender.com/',
+		origin: 'https://starterkana.onrender.com',
 	},
 })
 
