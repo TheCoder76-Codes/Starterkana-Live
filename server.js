@@ -27,22 +27,18 @@ let activeGames = []
 let filter = new Filter()
 
 app.get('/', (req, res) => {
-	res.send(
-		JSON.stringify({
-			online: true,
-			connected: true,
-		})
-	)
+	res.send({
+		online: true,
+		connected: true,
+	})
 })
 
 app.get('/status', (req, res) => {
 	res.set('Access-Control-Allow-Origin', 'https://starterkana.onrender.com')
 	res.set('Access-Control-Allow-Methods', 'GET')
-	res.send(
-		JSON.stringify({
-			online: true,
-		})
-	)
+	res.send({
+		online: true,
+	})
 })
 
 io.on('connection', (socket) => {
