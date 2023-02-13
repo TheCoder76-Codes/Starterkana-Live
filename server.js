@@ -36,6 +36,8 @@ app.get('/', (req, res) => {
 })
 
 app.get('/status', (req, res) => {
+	res.set('Access-Control-Allow-Origin', 'https://starterkana.onrender.com')
+	res.set('Access-Control-Allow-Methods', 'GET')
 	res.send(
 		JSON.stringify({
 			online: true,
@@ -126,7 +128,7 @@ io.on('connection', (socket) => {
 	socket.on('resetGame', (game) => {
 		let index = activeGames.findIndex((i) => i.gameId == game.gameId)
 		// finishers reset, cnajoin true, task gone
-		activeGames[index].finishers = []
+		activeGames[index]['finishers'] = []
 		activeGames[index].canJoin = true
 		activeGames[index].task = {}
 		io.to(game.gameId).emit('playerResetGame', activeGames[index])
